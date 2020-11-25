@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ShoppingCarMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.ShoppingCar">
+        <id column="id" property="id" />
+        <result column="product_id" property="productId" />
+        <result column="product_name" property="productName" />
+        <result column="specification_combine_id" property="specificationCombineId" />
+        <result column="buy_number" property="buyNumber" />
+        <result column="user_id" property="userId" />
+        <result column="user_name" property="userName" />
+        <result column="status" property="status" />
+        <result column="is_delete" property="isDelete" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="version" property="version" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, product_id AS productId, product_name AS productName, specification_combine_id AS specificationCombineId, buy_number AS buyNumber, user_id AS userId, user_name AS userName, status, is_delete AS isDelete, create_time AS createTime, update_time AS updateTime, version
+    </sql>
+
+	<select id="queryByPage" parameterType="com.example.demo.entity.ShoppingCar" resultType="com.example.demo.entity.ShoppingCar" useCache="false">
+		
+		select 
+			<include refid="Base_Column_List" /> 
+		from shopping_car
+		where 1=1
+		<if test="id != null and id != ''">
+			and id = #{id}
+		</if>
+		<if test="productId != null and productId != ''">
+			and product_id = #{productId}
+		</if>
+		<if test="productName != null and productName != ''">
+			and product_name = #{productName}
+		</if>
+		<if test="specificationCombineId != null and specificationCombineId != ''">
+			and specification_combine_id = #{specificationCombineId}
+		</if>
+		<if test="buyNumber != null and buyNumber != ''">
+			and buy_number = #{buyNumber}
+		</if>
+		<if test="userId != null and userId != ''">
+			and user_id = #{userId}
+		</if>
+		<if test="userName != null and userName != ''">
+			and user_name = #{userName}
+		</if>
+		<if test="status != null and status != ''">
+			and status = #{status}
+		</if>
+		<if test="isDelete != null and isDelete != ''">
+			and is_delete = #{isDelete}
+		</if>
+		<if test="createTime != null and createTime != ''">
+			and create_time = #{createTime}
+		</if>
+		<if test="updateTime != null and updateTime != ''">
+			and update_time = #{updateTime}
+		</if>
+		<if test="version != null and version != ''">
+			and version = #{version}
+		</if>
+		
+  	</select>
+  	
+  	<insert id="add" parameterType="com.example.demo.entity.ShoppingCar" useGeneratedKeys="true" keyProperty="id">
+	    insert into shopping_car
+	    <trim prefix="(" suffix=")" suffixOverrides="," >
+		<if test="id != null" >
+			id,
+		</if>
+		<if test="productId != null" >
+			product_id,
+		</if>
+		<if test="productName != null" >
+			product_name,
+		</if>
+		<if test="specificationCombineId != null" >
+			specification_combine_id,
+		</if>
+		<if test="buyNumber != null" >
+			buy_number,
+		</if>
+		<if test="userId != null" >
+			user_id,
+		</if>
+		<if test="userName != null" >
+			user_name,
+		</if>
+		<if test="status != null" >
+			status,
+		</if>
+		<if test="isDelete != null" >
+			is_delete,
+		</if>
+		<if test="createTime != null" >
+			create_time,
+		</if>
+		<if test="updateTime != null" >
+			update_time,
+		</if>
+		<if test="version != null" >
+			version,
+		</if>
+	    </trim>
+	    <trim prefix="values (" suffix=")" suffixOverrides="," >
+		<if test="id != null" >
+			#{id,jdbcType=VARCHAR},
+		</if>
+		<if test="productId != null" >
+			#{productId,jdbcType=VARCHAR},
+		</if>
+		<if test="productName != null" >
+			#{productName,jdbcType=VARCHAR},
+		</if>
+		<if test="specificationCombineId != null" >
+			#{specificationCombineId,jdbcType=VARCHAR},
+		</if>
+		<if test="buyNumber != null" >
+			#{buyNumber,jdbcType=VARCHAR},
+		</if>
+		<if test="userId != null" >
+			#{userId,jdbcType=VARCHAR},
+		</if>
+		<if test="userName != null" >
+			#{userName,jdbcType=VARCHAR},
+		</if>
+		<if test="status != null" >
+			#{status,jdbcType=VARCHAR},
+		</if>
+		<if test="isDelete != null" >
+			#{isDelete,jdbcType=VARCHAR},
+		</if>
+		<if test="createTime != null" >
+			#{createTime,jdbcType=VARCHAR},
+		</if>
+		<if test="updateTime != null" >
+			#{updateTime,jdbcType=VARCHAR},
+		</if>
+		<if test="version != null" >
+			#{version,jdbcType=VARCHAR},
+		</if>
+	  </trim>
+	    
+  </insert>
+  
+  <update id="update" parameterType="com.example.demo.entity.ShoppingCar" >
+
+    update shopping_car
+    <set >
+	  <if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+	  <if test="productId != null" >
+        product_id = #{productId,jdbcType=VARCHAR},
+      </if>
+	  <if test="productName != null" >
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+	  <if test="specificationCombineId != null" >
+        specification_combine_id = #{specificationCombineId,jdbcType=VARCHAR},
+      </if>
+	  <if test="buyNumber != null" >
+        buy_number = #{buyNumber,jdbcType=VARCHAR},
+      </if>
+	  <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+	  <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+	  <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+	  <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=VARCHAR},
+      </if>
+	  <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+	  <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+	  <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+	</set>
+	where id = #{id,jdbcType=INTEGER}
+	
+  </update>
+  
+
+</mapper>
